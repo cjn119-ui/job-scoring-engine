@@ -1,0 +1,89 @@
+{
+ "jobs": [
+  {
+   "id": 101,
+   "title": "Senior Data Platform Engineer",
+   "location": {
+    "name": "Remote - United States"
+   },
+   "updated_at": "2026-10-20T10:00:00-04:00",
+   "first_published": "2026-10-20T10:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/acme-example/jobs/101",
+   "company_name": "Acme Robotics",
+   "metadata": [
+    {
+     "name": "Location Type",
+     "value": "Remote"
+    }
+   ]
+  },
+  {
+   "id": 102,
+   "title": "Backend Engineer, Payments API",
+   "location": {
+    "name": "Austin, TX"
+   },
+   "updated_at": "2026-10-20T10:00:00-04:00",
+   "first_published": "2026-10-20T10:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/acme-example/jobs/102",
+   "company_name": "Acme Robotics",
+   "metadata": [
+    {
+     "name": "Location Type",
+     "value": "Hybrid"
+    }
+   ]
+  },
+  {
+   "id": 103,
+   "title": "Data Entry Clerk",
+   "location": {
+    "name": "Austin, TX"
+   },
+   "updated_at": "2026-10-20T10:00:00-04:00",
+   "first_published": "2026-10-20T10:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/acme-example/jobs/103",
+   "company_name": "Acme Robotics",
+   "metadata": [
+    {
+     "name": "Location Type",
+     "value": "Hybrid"
+    }
+   ]
+  },
+  {
+   "id": 104,
+   "title": "Senior Data Engineer",
+   "location": {
+    "name": "London, United Kingdom"
+   },
+   "updated_at": "2026-10-20T10:00:00-04:00",
+   "first_published": "2026-10-20T10:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/acme-example/jobs/104",
+   "company_name": "Acme Robotics",
+   "metadata": [
+    {
+     "name": "Location Type",
+     "value": "Hybrid"
+    }
+   ]
+  },
+  {
+   "id": 105,
+   "title": "Frontend Engineer",
+   "location": {
+    "name": "Austin, TX"
+   },
+   "updated_at": "2026-10-20T10:00:00-04:00",
+   "first_published": "2026-10-20T10:00:00-04:00",
+   "absolute_url": "https://job-boards.greenhouse.io/acme-example/jobs/105",
+   "company_name": "Acme Robotics",
+   "metadata": [
+    {
+     "name": "Location Type",
+     "value": "Hybrid"
+    }
+   ]
+  }
+ ]
+}

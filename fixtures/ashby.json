@@ -1,0 +1,97 @@
+{
+ "jobs": [
+  {
+   "id": "a1",
+   "title": "Analytics Engineer",
+   "department": "Data",
+   "location": "Remote - United States",
+   "isRemote": true,
+   "workplaceType": "Remote",
+   "isListed": true,
+   "descriptionPlain": "Own our analytics engineering practice: dbt models, data quality tests and a Snowflake warehouse. Work with stakeholders across the company. Python and SQL required. End-to-end ownership.",
+   "jobUrl": "https://jobs.ashbyhq.com/globex-example/a1",
+   "applyUrl": "https://jobs.ashbyhq.com/globex-example/a1/application",
+   "publishedAt": "2026-10-25T09:00:00Z",
+   "employmentType": "FullTime",
+   "secondaryLocations": [],
+   "compensation": {
+    "summaryComponents": [
+     {
+      "compensationType": "Salary",
+      "interval": "1 YEAR",
+      "currencyCode": "USD",
+      "minValue": 140000,
+      "maxValue": 175000
+     }
+    ]
+   }
+  },
+  {
+   "id": "a2",
+   "title": "Analytics Engineer",
+   "department": "Data",
+   "location": "Remote - United States",
+   "isRemote": true,
+   "workplaceType": "Remote",
+   "isListed": true,
+   "descriptionPlain": "Own our analytics engineering practice: dbt models, data quality tests and a Snowflake warehouse. Work with stakeholders across the company. Python and SQL required. End-to-end ownership.",
+   "jobUrl": "https://jobs.ashbyhq.com/globex-example/a2",
+   "applyUrl": "https://jobs.ashbyhq.com/globex-example/a2/application",
+   "publishedAt": "2026-10-25T09:00:00Z",
+   "employmentType": "FullTime",
+   "secondaryLocations": [],
+   "compensation": {
+    "summaryComponents": [
+     {
+      "compensationType": "Salary",
+      "interval": "1 YEAR",
+      "currencyCode": "USD",
+      "minValue": 140000,
+      "maxValue": 175000
+     }
+    ]
+   }
+  },
+  {
+   "id": "a3",
+   "title": "Data Engineer",
+   "department": "Data",
+   "location": "Remote - United States",
+   "isRemote": true,
+   "workplaceType": "Remote",
+   "isListed": true,
+   "descriptionPlain": "<p>This role is based in Berlin, Germany. Build ETL pipelines with Python and SQL.</p>",
+   "jobUrl": "https://jobs.ashbyhq.com/globex-example/a3",
+   "applyUrl": "https://jobs.ashbyhq.com/globex-example/a3/application",
+   "publishedAt": "2026-10-25T09:00:00Z",
+   "employmentType": "FullTime",
+   "secondaryLocations": []
+  },
+  {
+   "id": "a4",
+   "title": "Retired Role",
+   "department": "Data",
+   "location": "Remote - United States",
+   "isRemote": true,
+   "workplaceType": "Remote",
+   "isListed": false,
+   "descriptionPlain": "Own our analytics engineering practice: dbt models, data quality tests and a Snowflake warehouse. Work with stakeholders across the company. Python and SQL required. End-to-end ownership.",
+   "jobUrl": "https://jobs.ashbyhq.com/globex-example/a4",
+   "applyUrl": "https://jobs.ashbyhq.com/globex-example/a4/application",
+   "publishedAt": "2026-10-25T09:00:00Z",
+   "employmentType": "FullTime",
+   "secondaryLocations": [],
+   "compensation": {
+    "summaryComponents": [
+     {
+      "compensationType": "Salary",
+      "interval": "1 YEAR",
+      "currencyCode": "USD",
+      "minValue": 140000,
+      "maxValue": 175000
+     }
+    ]
+   }
+  }
+ ]
+}

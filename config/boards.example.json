@@ -1,0 +1,35 @@
+{
+  "_comment": "Fictional boards. 'candidates' lists [ats, token] pairs to try. The hosts are the real public ATS APIs, so offline runs use the recorded fixtures in fixtures/.",
+  "companies": [
+    {
+      "company": "Acme Robotics (fictional)",
+      "candidates": [
+        [
+          "greenhouse",
+          "acme-example"
+        ]
+      ],
+      "careers_url": "https://careers.acme-robotics.example"
+    },
+    {
+      "company": "Globex Analytics (fictional)",
+      "candidates": [
+        [
+          "ashby",
+          "globex-example"
+        ]
+      ],
+      "careers_url": "https://careers.globex-analytics.example"
+    },
+    {
+      "company": "Initech Cloud (fictional)",
+      "candidates": [
+        [
+          "lever",
+          "initech-example"
+        ]
+      ],
+      "careers_url": "https://careers.initech-cloud.example"
+    }
+  ]
+}

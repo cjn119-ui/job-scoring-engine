@@ -1,0 +1,264 @@
+{
+  "_comment": "Synthetic example profile for a fictional backend/data-platform job search. Replace with your own; everything here is an input to deterministic scoring and no posting text can change it. min_comp_usd is intentionally absent: without it, pay is reported but never compared.",
+  "hours_per_year": 2080,
+  "strong_threshold": 62,
+  "stretch_threshold": 40,
+  "title_families": {
+    "data_platform": {
+      "weight": 40,
+      "patterns": [
+        "\\bdata (platform|infrastructure) (engineer|developer|architect)\\b",
+        "\\bdata engineer\\b",
+        "\\banalytics engineer\\b"
+      ]
+    },
+    "backend": {
+      "weight": 36,
+      "patterns": [
+        "\\b(backend|back-end|platform|api) (engineer|developer)\\b",
+        "\\bsoftware engineer.{0,20}(backend|platform|data)\\b"
+      ]
+    },
+    "integrations": {
+      "weight": 32,
+      "patterns": [
+        "\\bintegrations? (engineer|developer)\\b",
+        "\\bsolutions? (engineer|architect)\\b"
+      ]
+    },
+    "software_generic": {
+      "weight": 14,
+      "patterns": [
+        "\\bsoftware (engineer|developer)\\b"
+      ]
+    }
+  },
+  "title_family_requires": {
+    "data_platform": "pipelines"
+  },
+  "unsupported_title_factor": 0.6,
+  "specialty_exempt_families": [
+    "data_platform",
+    "backend",
+    "integrations"
+  ],
+  "coarse_keep_keywords": [
+    "data",
+    "platform",
+    "backend",
+    "pipeline",
+    "integrations?",
+    "api",
+    "infrastructure"
+  ],
+  "responsibility_signals": {
+    "pipelines": [
+      "\\bpipelines?\\b",
+      "\\betl\\b",
+      "\\belt\\b",
+      "data quality",
+      "data warehouse",
+      "\\bairflow\\b",
+      "\\bdbt\\b"
+    ],
+    "services": [
+      "\\bmicroservices?\\b",
+      "\\bservices?\\b.{0,30}\\b(scale|latency|reliab)",
+      "\\bapis?\\b"
+    ],
+    "reliability": [
+      "on[- ]call",
+      "\\bobservability\\b",
+      "\\bslo(s)?\\b",
+      "incident"
+    ],
+    "collaboration": [
+      "cross[- ]functional",
+      "stakeholders",
+      "design reviews?"
+    ]
+  },
+  "tech_signals": {
+    "python": {
+      "points": 5,
+      "patterns": [
+        "\\bpython\\b"
+      ]
+    },
+    "sql": {
+      "points": 4,
+      "patterns": [
+        "\\bsql\\b",
+        "postgres",
+        "bigquery",
+        "snowflake"
+      ]
+    },
+    "cloud": {
+      "points": 2,
+      "patterns": [
+        "\\baws\\b",
+        "\\bgcp\\b",
+        "\\bazure\\b"
+      ]
+    },
+    "tooling": {
+      "points": 2,
+      "patterns": [
+        "\\bdocker\\b",
+        "\\bgit\\b",
+        "ci/cd",
+        "terraform"
+      ]
+    }
+  },
+  "ownership_signals": [
+    "ownership",
+    "end[- ]to[- ]end",
+    "small team",
+    "greenfield",
+    "from scratch"
+  ],
+  "gaps": {
+    "major": {
+      "phd_required": [
+        "ph\\.?d\\.?\\s+(is\\s+)?required",
+        "doctorate (is )?required"
+      ],
+      "clearance_or_citizenship": [
+        "security clearance",
+        "ts/sci",
+        "must be a u\\.?s\\.? citizen"
+      ],
+      "specialty_mismatch": [
+        "\\b(frontend|front-end|embedded|firmware|mobile|ios|android|kernel|compiler|hardware|gpu)\\b"
+      ]
+    },
+    "minor": {
+      "other_language_required": [
+        "(proficien\\w+|expert\\w*|production experience) (in|with) (java|c\\+\\+|golang|rust|scala|kotlin|swift)\\b"
+      ],
+      "people_management": [
+        "\\b(manage|managing|lead) a team of\\b",
+        "\\bdirect reports\\b"
+      ]
+    }
+  },
+  "hard_exclusions": {
+    "title": [
+      "\\bintern(ship)?\\b",
+      "\\bnew grad\\b",
+      "\\bentry[- ]level\\b",
+      "\\bjunior\\b",
+      "\\bdata entry\\b"
+    ],
+    "description_repeated": {
+      "data_entry": [
+        "data entry",
+        "keying (in|data)"
+      ],
+      "payroll": [
+        "\\bpayroll\\b",
+        "\\bhris\\b"
+      ]
+    },
+    "description_repeated_min": 3
+  },
+  "us_markers": [
+    "united states",
+    "\\busa?\\b",
+    "u\\.s\\.",
+    "alabama",
+    "alaska",
+    "arizona",
+    "arkansas",
+    "california",
+    "colorado",
+    "connecticut",
+    "delaware",
+    "florida",
+    "georgia",
+    "hawaii",
+    "idaho",
+    "illinois",
+    "indiana",
+    "iowa",
+    "kansas",
+    "kentucky",
+    "louisiana",
+    "maine",
+    "maryland",
+    "massachusetts",
+    "michigan",
+    "minnesota",
+    "mississippi",
+    "missouri",
+    "montana",
+    "nebraska",
+    "nevada",
+    "ohio",
+    "oklahoma",
+    "oregon",
+    "pennsylvania",
+    "tennessee",
+    "texas",
+    "utah",
+    "vermont",
+    "virginia",
+    "washington",
+    "wisconsin",
+    "wyoming"
+  ],
+  "non_us_markers": [
+    "united kingdom",
+    "\\buk\\b",
+    "london",
+    "canada",
+    "toronto",
+    "india",
+    "bengaluru",
+    "germany",
+    "berlin",
+    "europe",
+    "emea",
+    "australia",
+    "singapore"
+  ],
+  "cost_of_living_estimate": {
+    "_note": "Coarse tiers from general knowledge; NOT verified data. Informational only; never changes a score.",
+    "high": [
+      "san francisco",
+      "new york",
+      "seattle",
+      "boston"
+    ],
+    "medium": [
+      "austin",
+      "denver",
+      "chicago",
+      "atlanta"
+    ],
+    "low": [
+      "pittsburgh",
+      "columbus",
+      "kansas city"
+    ]
+  },
+  "evergreen_markers": [
+    "talent (pool|community|network)",
+    "general application",
+    "future opportunities",
+    "always hiring",
+    "evergreen"
+  ],
+  "injection_markers": [
+    "ignore (all |any |the )?(previous|prior|above) (instructions|prompts?)",
+    "as an ai (model|assistant|language model)",
+    "system prompt",
+    "disregard (the|your) (rules|instructions)"
+  ],
+  "relocation_markers": [
+    "relocation (assistance|support|package|benefits?|bonus|stipend)",
+    "(we|will) (offer|provide) relocation"
+  ]
+}

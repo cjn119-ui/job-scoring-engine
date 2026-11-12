@@ -1,0 +1,10 @@
+{
+ "https://boards-api.greenhouse.io/v1/boards/acme-example/jobs": "gh_list.json",
+ "https://boards-api.greenhouse.io/v1/boards/acme-example/jobs/101?pay_transparency=true": "gh_101.json",
+ "https://boards-api.greenhouse.io/v1/boards/acme-example/jobs/102?pay_transparency=true": "gh_102.json",
+ "https://boards-api.greenhouse.io/v1/boards/acme-example/jobs/103?pay_transparency=true": "gh_103.json",
+ "https://boards-api.greenhouse.io/v1/boards/acme-example/jobs/104?pay_transparency=true": "gh_104.json",
+ "https://boards-api.greenhouse.io/v1/boards/acme-example/jobs/105?pay_transparency=true": "gh_105.json",
+ "https://api.ashbyhq.com/posting-api/job-board/globex-example?includeCompensation=true": "ashby.json",
+ "https://api.lever.co/v0/postings/initech-example?mode=json": "lever.json"
+}

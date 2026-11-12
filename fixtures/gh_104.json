@@ -1,0 +1,24 @@
+{
+ "id": 104,
+ "title": "Senior Data Engineer",
+ "location": {
+  "name": "London, United Kingdom"
+ },
+ "updated_at": "2026-10-20T10:00:00-04:00",
+ "first_published": "2026-10-20T10:00:00-04:00",
+ "absolute_url": "https://job-boards.greenhouse.io/acme-example/jobs/104",
+ "company_name": "Acme Robotics",
+ "metadata": [
+  {
+   "name": "Location Type",
+   "value": "Hybrid"
+  }
+ ],
+ "content": "&lt;p&gt;This role is based in London, United Kingdom. Build ETL pipelines with Python and SQL.&lt;/p&gt;",
+ "departments": [
+  {
+   "name": "Engineering"
+  }
+ ],
+ "pay_input_ranges": []
+}

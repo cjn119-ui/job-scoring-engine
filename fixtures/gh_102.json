@@ -1,0 +1,24 @@
+{
+ "id": 102,
+ "title": "Backend Engineer, Payments API",
+ "location": {
+  "name": "Austin, TX"
+ },
+ "updated_at": "2026-10-20T10:00:00-04:00",
+ "first_published": "2026-10-20T10:00:00-04:00",
+ "absolute_url": "https://job-boards.greenhouse.io/acme-example/jobs/102",
+ "company_name": "Acme Robotics",
+ "metadata": [
+  {
+   "name": "Location Type",
+   "value": "Hybrid"
+  }
+ ],
+ "content": "&lt;p&gt;Build and operate Python services and REST APIs for our payments product. You will be on-call, care about observability and SLOs, and review designs with other teams. Experience with AWS and Docker helps.&lt;/p&gt;",
+ "departments": [
+  {
+   "name": "Engineering"
+  }
+ ],
+ "pay_input_ranges": []
+}

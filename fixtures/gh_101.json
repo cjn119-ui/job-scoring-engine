@@ -1,0 +1,31 @@
+{
+ "id": 101,
+ "title": "Senior Data Platform Engineer",
+ "location": {
+  "name": "Remote - United States"
+ },
+ "updated_at": "2026-10-20T10:00:00-04:00",
+ "first_published": "2026-10-20T10:00:00-04:00",
+ "absolute_url": "https://job-boards.greenhouse.io/acme-example/jobs/101",
+ "company_name": "Acme Robotics",
+ "metadata": [
+  {
+   "name": "Location Type",
+   "value": "Remote"
+  }
+ ],
+ "content": "&lt;p&gt;About the role&lt;/p&gt;&lt;p&gt;You will design and run data pipelines in Python and SQL on Snowflake, own data quality end to end, and work with cross-functional stakeholders. Airflow and dbt experience is a plus. You will own the platform from scratch with a small team.&lt;/p&gt;&lt;p&gt;The base salary range for this role is $150,000 - $190,000 per year.&lt;/p&gt;",
+ "departments": [
+  {
+   "name": "Engineering"
+  }
+ ],
+ "pay_input_ranges": [
+  {
+   "min_cents": 15000000,
+   "max_cents": 19000000,
+   "currency_type": "USD",
+   "title": "Annual Salary:"
+  }
+ ]
+}
