@@ -1,28 +1,51 @@
 # job-scoring-engine
 
-Ingests postings from public applicant-tracking-system (ATS) job boards, normalizes them into one schema, and scores each against a profile with **deterministic, explainable rules**: every point of score, every exclusion and every gap carries a quoted excerpt from the posting, and anything the posting does not state is reported as unknown rather than guessed.
+[![tests](https://github.com/cjn119-ui/job-scoring-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/cjn119-ui/job-scoring-engine/actions/workflows/tests.yml)
 
-This is research tooling only. It reads public board APIs; it has no application, outreach or submission code.
+**A job-search tool that reads public job boards, puts every posting into one format, and ranks them with rules you can check line by line.** Every point of score quotes the posting it came from. Anything the posting doesn't say, like pay, is reported as unknown instead of guessed. I designed it and wrote the requirements and tests, and AI coding agents wrote the code.
 
-## Problem
+## What it does
 
-Job boards are noisy and the usual shortcuts are opaque: a model-assigned "match %" you can't audit, or keyword filters that treat a pay blurb for sales roles as the salary of an engineering role. This engine makes each judgment inspectable and refuses to invent facts: unpublished pay stays "not published", an on-target-earnings range doesn't "verify" a base salary, and your qualifications are always `UNKNOWN` until you check them.
+1. **Collects postings** from the public job-board APIs of Greenhouse, Ashby and Lever, politely: read-only requests to a fixed list of hosts, a rate limit per host, and no workarounds when a board says no.
+2. **Normalizes them** into one schema, whatever board they came from, and strips hidden page text so nothing a reader can't see can change a score.
+3. **Scores each posting** against a profile: job family, responsibilities, ownership, gaps, location rules and pay. Each posting lands in a tier: strong, stretch, attractive but poor fit, poor fit, or excluded.
+4. **Tracks changes over time.** A posting that disappears is marked closed, not deleted; duplicates collapse into one; changes since last run are described.
+5. **Writes a shortlist report** in Markdown, with at most two roles per company.
 
-## How it works
+## Sample output
 
+From `make run`, which scores three fictional boards offline:
+
+```markdown
+### 1. globex-example - Analytics Engineer
+- **Where:** Remote - United States - workplace: remote
+- **Pay:** $140,000-$175,000 - verified (provider field) - no minimum configured: pay is reported, not compared
+- **Score 69.0 (family data_platform):** pipelines: "Own our analytics engineering practice: dbt models,
+  data quality tests and a Snowflake warehouse. ..."; ownership: "...Python and SQL required. End-to-end ownership."
+- **Stated requirements (candidate attainment UNKNOWN):** none captured
+- **Priority P1:** review qualifications first: strong profile alignment and recent published pay;
+  candidate qualifications remain unverified
+
+## Stretches (verify before investing)
+- initech-example - Integrations Engineer - score 51.0 - pay: not published (unknown, not assumed)
+- initech-example - Solutions Engineer - score 42.0 - pay: $180,000-$240,000 - on-target earnings
+  (variable pay included); BASE NOT VERIFIED
 ```
-boards file ──► collect.py ──► sources.py ──► evaluate.py ──► pipeline.py ──► report.py
- (companies,     fetch via       normalize     score, tier,     state: merge,    shortlist
-  ATS tokens)    allowlisted     to one        quote           dedupe, close,    markdown
-                 GET-only        posting       evidence        shortlist
-                 fetcher         schema
-```
 
-- **`sources.py`**: Greenhouse, Ashby and Lever adapters. HTTPS GET only, fixed host allowlist, no redirects or cookies, size and time caps, per-host rate limit. A 401/403/429 marks the board blocked and is never retried around. HTML is reduced to visible text *before* scoring, so hidden or script text can't influence a score. The transport is injectable, so tests never touch the network.
-- **`evaluate.py`**: the rules. Title family (weighted patterns), responsibility and technology signals, ownership signals, gap penalties, hard exclusions, US eligibility, compensation assessment (structured vs. stated-in-text, annualization, non-USD handling, OTE detection), and instruction-like text flagged as `injection_suspect`. Output is a tier (`strong`, `stretch`, `attractive_poor_fit`, `poor_fit`, `excluded`) plus an evidence trail. A `title_only` variant exists for controlled comparison.
-- **`pipeline.py`**: merges evaluations into a JSON-serializable state. A posting missing from a successful listing is recorded as closed, not deleted; changes since last seen are described; duplicates collapse; the shortlist allows at most two entries per company.
-- **`report.py`**: Markdown report with all untrusted text neutralized.
-- Standard library only. The profile (`config/profile.example.json`) is synthetic; replace it with your own via `JOB_SCORING_PROFILE`.
+Notice the last line: a sales-style pay range is flagged as commission-inclusive and never passed off as base salary.
+
+## How it's tested
+
+65 automated tests run on every push (see the badge above). They check behavior a user would care about, for example:
+
+- Unpublished pay stays unknown; a pay range that includes commission doesn't count as a verified salary.
+- Weekly and monthly pay is converted to a yearly figure; non-USD pay is never shown as dollars.
+- A flashy title with no real substance scores as a poor fit, not a strong match.
+- Instruction-like text planted in a posting is flagged and changes no decision.
+- One company can't fill the whole shortlist; a posting that disappears is recorded as closed.
+- Only the allowed public hosts are ever contacted, and a refusal from a board is never retried around.
+
+The tests run against recorded responses, so they never touch the network.
 
 ## Run it
 
@@ -34,19 +57,30 @@ make run      # offline: three fictional boards served from recorded payloads in
 make test
 ```
 
-`job-scoring run --boards <file>` without `--fixtures` fetches the real public APIs for whatever tokens your boards file lists. `job-scoring evaluate postings.json` scores postings you already have. `config/boards.example.json` and every posting in `fixtures/` are fictional.
+`job-scoring run --boards <file>` without `--fixtures` fetches the real public APIs for the boards you list. `job-scoring evaluate postings.json` scores postings you already have. Replace the synthetic profile (`config/profile.example.json`) with your own via `JOB_SCORING_PROFILE`.
+
+## How it works
+
+```
+boards file ──► collect.py ──► sources.py ──► evaluate.py ──► pipeline.py ──► report.py
+ (companies,     fetch via       normalize     score, tier,     merge, dedupe,   shortlist
+  board tokens)  allowlisted     to one        quote            mark closed,     markdown
+                 GET-only        posting       evidence         shortlist
+                 fetcher         schema
+```
+
+Standard library only. Every judgment is tagged `verified` (quoted from the posting), `inferred` (from a rule) or `unknown`.
 
 ## Design decisions
 
-- **Unknown is a first-class value.** Pay, requirements and qualifications each have an explicit "not stated / UNKNOWN" outcome, and the report repeats it.
-- **Rules over model judgment for scoring.** A fixed rule set can be diffed, unit-tested and argued with; every claim is tagged `verified` (quoted), `inferred` (rule) or `unknown`.
-- **Posting text is data, never instructions.** Scripts, hidden elements and comments are stripped, instruction-like text is flagged, and the report escapes control characters, markup and link syntax.
-- **No pay floor by default.** The shipped profile sets none, so pay is reported but never compared; set `min_comp_usd` to enable below-minimum exclusion (a range that straddles the floor is flagged, not excluded).
-- **Politeness is enforced in code**: host allowlist, rate limit, no workaround of refusals.
+- **Unknown is a real answer.** Pay, requirements and qualifications each have an explicit "not stated" outcome, and the report repeats it.
+- **Rules over model judgment.** A fixed rule set can be diffed, tested and argued with. A model-assigned "match %" can't.
+- **Posting text is data, never instructions.** Scripts, hidden elements and comments are stripped before scoring, and the report escapes markup and links.
+- **No pay floor by default.** Pay is reported but not compared unless you set `min_comp_usd`; a range that straddles your floor is flagged, not excluded.
 
 ## Provenance and authorship
 
-I wrote the requirements, architecture and tests, and directed AI coding agents (Claude Code and Codex) to write the code. This repository is extracted and rewritten from a larger private production system, not the running code itself: the scheduler, approval workflow, application-preparation features and personal profile data were left out, and the profile, boards and postings here are synthetic.
+I wrote the requirements, architecture and tests, and directed AI coding agents (Claude Code and Codex) to write the code. This repository is extracted and rewritten from a larger private system, not the running code itself: the scheduler, approval workflow, application-preparation features and personal profile data were left out, and the profile, boards and postings here are synthetic. It reads public data only and has no application or outreach code.
 
 ## License
 
